@@ -9,16 +9,16 @@ const PORT = 3000;
 // app.use(bodyParser.urlencoded({extended: true}));
 
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(`${__dirname}/../client/dist`));
 
-app.get('/api/reviews', (req, res) => {
+app.get('/rooms', (req, res) => {
   db.getData((err, results) => {
     if (err) {
       console.log(err);
     } else {
       res.send(results);
     }
-  })
+  });
 });
 
 app.listen(PORT, () => {

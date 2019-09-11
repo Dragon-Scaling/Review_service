@@ -7,15 +7,17 @@ class Reviewlist extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-        {Array.from(this.props.data).map(datum => {
-          return(
-          <ReviewlistEntry data={datum} />
-          )}
+        {Array.from(this.props.data).map((datum, i) => {
+          return (
+            <ReviewlistEntry data={datum} key={i} />
+          )
+          ;
+        }
         )}
-        </div>
-    )
+      </div>
+    );
   }
 
 

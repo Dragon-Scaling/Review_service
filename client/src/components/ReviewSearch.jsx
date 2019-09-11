@@ -17,6 +17,6 @@ class ReviewSearch extends React.Component {
       </div>
     );
   }
-  }
+}
 
 export default ReviewSearch;

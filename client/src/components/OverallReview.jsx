@@ -1,6 +1,6 @@
 import React from 'react';
 import Ratings from 'react-ratings-declarative';
-import styles from './OverallReview.css'
+import styles from './OverallReview.css';
 
 class OverallReview extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class OverallReview extends React.Component {
     this.state = {
       total: '',
       rating: ''
-    }
+    };
 
     this.getData = this.getData.bind(this);
   }
@@ -25,7 +25,7 @@ class OverallReview extends React.Component {
     this.setState({
       total: data.length,
       rating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+    });
   }
 
   componentDidUpdate(props) {
@@ -35,21 +35,21 @@ class OverallReview extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div className={styles.overall}>
         <span>
           <div>
             {this.state.total} Reviews  <Ratings rating={Number(this.state.rating)} widgetRatedColors="007D8C" widgetDimensions="20px" widgetSpacings="1px">
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-              </Ratings>
+              <Ratings.Widget />
+              <Ratings.Widget />
+              <Ratings.Widget />
+              <Ratings.Widget />
+              <Ratings.Widget />
+            </Ratings>
           </div>
         </span>
       </div>
-    )
+    );
   }
 }
 

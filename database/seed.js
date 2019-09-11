@@ -4,7 +4,7 @@ const db = require('./index.js');
 function generateReviews() {
 
   let reviews = [];
-  let total = 3;
+  let total = 100;
 
   //10% of customers use/purchase same item or listing in more than one occasion
   let ninetyPercent = Math.ceil(total * 0.9);
@@ -35,7 +35,7 @@ function generateReviews() {
 
     let custName = faker.name.firstName();
     let tempDate = faker.date.past().toString();
-    let custDate = tempDate.slice(4,15);
+    let custDate = tempDate.slice(4, 15);
     let custUrl = faker.image.avatar();
     let custReview = faker.lorem.paragraph();
     let overallRating = Math.floor(Math.random() * 6);
@@ -51,29 +51,29 @@ function generateReviews() {
     let hostResponse = faker.lorem.paragraph();
     let listingId = Math.floor(Math.random() * 101);
 
-//need to account for smaller pool of hosts, customer names, and consistent name to url(picture)
+    //need to account for smaller pool of hosts, customer names, and consistent name to url(picture)
 
     reviews.push({
-        "id": id,
-        "custName": custName,
-        "custDate": custDate,
-        "custUrl": custUrl,
-        "custReview": custReview,
-        "overallRating": overallRating,
-        "accuracyRating": accuracyRating,
-        "commRating": commRating,
-        "cleanRating": cleanRating,
-        "locationRating": locationRating,
-        "checkinRating": checkinRating,
-        "valueRating": valueRating,
-        "hostName": hostName,
-        "hostDate": hostDate,
-        "hostUrl": hostUrl,
-        "hostResponse": hostResponse,
-        "listingId": listingId
+      'id': id,
+      'custName': custName,
+      'custDate': custDate,
+      'custUrl': custUrl,
+      'custReview': custReview,
+      'overallRating': overallRating,
+      'accuracyRating': accuracyRating,
+      'commRating': commRating,
+      'cleanRating': cleanRating,
+      'locationRating': locationRating,
+      'checkinRating': checkinRating,
+      'valueRating': valueRating,
+      'hostName': hostName,
+      'hostDate': hostDate,
+      'hostUrl': hostUrl,
+      'hostResponse': hostResponse,
+      'listingId': listingId
     });
 
-    reviews.sort(function(a,b) {
+    reviews.sort(function(a, b) {
       return new Date(b.custDate) - new Date(a.custDate);
     });
   }
@@ -89,6 +89,6 @@ for (let i = 0; i < reviewsData.length; i++) {
       console.log(err);
     }
   });
-};
+}
 
 module.exports.reviewsData = reviewsData;

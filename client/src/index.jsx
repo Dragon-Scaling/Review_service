@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
@@ -15,53 +18,50 @@ class App extends React.Component {
     this.state = {
       entry: '',
       searchTerm: '',
-      filtered: ''
-    }
+      filtered: '',
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount() {
-// GET request to retrieve reviews data
+    // GET request to retrieve reviews data
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:3000/api/reviews',
+      url: 'http://localhost:3000/rooms',
       dataType: 'json',
       success: (data) => {
         this.setState({
           entry: data,
-          filtered: data
-        })
+          filtered: data,
+        });
         console.log('success');
       },
       error: (err) => {
-        console.log('error')
-      }
+        console.log('error');
+      },
     });
-  };
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(search);
-    let search = this.state.entry.filter(function(review) {
-      return review.custReview.toLowerCase().includes($('#searchTerm').val().toLowerCase());
+    const search = this.state.entry.filter((review) => review.custReview.toLowerCase().includes($('#searchTerm').val().toLowerCase()));
+    this.setState({
+      filtered: search,
+      searchTerm: $('#searchTerm').val(),
     });
-      this.setState({
-        filtered: search,
-        searchTerm: $('#searchTerm').val()
-      })
   }
 
   handleGoBack() {
     this.setState({
-      searchTerm: ''
-    })
+      searchTerm: '',
+    });
     this.componentDidMount();
   }
 
   render() {
     if (this.state.filtered.length === 0 && this.state.searchTerm !== '') {
-      return(
+      return (
         <div className={styles.component}>
           <div className={styles.overallAndSearch}>
             <ReviewSearch handleSubmit={this.handleSubmit}/>
@@ -72,9 +72,9 @@ class App extends React.Component {
             <button onClick={this.handleGoBack} className={styles.button}>Back to all reviews</button>
           </div>
         </div>
-      )
-    } else if (this.state.filtered.length === 1 && this.state.searchTerm !== '') {
-      return(
+      );
+    } if (this.state.filtered.length === 1 && this.state.searchTerm !== '') {
+      return (
         <div className={styles.component}>
           <div className={styles.overallAndSearch}>
             <ReviewSearch handleSubmit={this.handleSubmit}/>
@@ -88,9 +88,9 @@ class App extends React.Component {
             <Reviewlist data={this.state.filtered} />
           </div>
         </div>
-      )
-    } else if (this.state.filtered.length > 1 && this.state.searchTerm !== '') {
-      return(
+      );
+    } if (this.state.filtered.length > 1 && this.state.searchTerm !== '') {
+      return (
         <div className={styles.component}>
           <div className={styles.overallAndSearch}>
             <ReviewSearch handleSubmit={this.handleSubmit}/>
@@ -104,9 +104,9 @@ class App extends React.Component {
             <Reviewlist data={this.state.filtered} />
           </div>
         </div>
-      )
-    } else {
-      return(
+      );
+    }
+    return (
         <div className={styles.component}>
           <div className={styles.overallAndSearch}>
             <ReviewSearch handleSubmit={this.handleSubmit}/>
@@ -119,11 +119,8 @@ class App extends React.Component {
             <Reviewlist data={this.state.filtered} />
           </div>
         </div>
-      )
-    }
+    );
   }
-
-
-};
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));

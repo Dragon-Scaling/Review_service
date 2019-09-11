@@ -1,13 +1,11 @@
 # Project Name
 
-> Project description
+> Backend for review module in reserving places to stay.
 
 ## Related Projects
 
-  - https://github.com/haab-solutions/photo-gallery-module
-  - https://github.com/haab-solutions/reviews-module
-  - https://github.com/haab-solutions/recommendations-module
-  - https://github.com/haab-solutions/reservations-module
+  - https://github.com/Dragon-Scaling/Reservation_service
+  - https://github.com/Dragon-Scaling/photo_gallery_service
 
 ## Table of Contents
 
@@ -17,7 +15,13 @@
 
 ## Usage
 
-> Some usage instructions
+> CRUD
+
+- app.post('/rooms', controller.create)
+- app.get('/rooms', controller.getAll)
+- app.get('/rooms/:id', controller.getOne)
+- app.put('/rooms/:id', controller.update)
+- app.delete('/rooms/:id', controller.remove)
 
 ## Requirements
 

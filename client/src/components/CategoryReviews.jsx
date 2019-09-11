@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Ratings from 'react-ratings-declarative';
 import styles from './CategoryReviews.css';
@@ -12,8 +13,8 @@ class CategoryReviews extends React.Component {
       cleanRating: '',
       locationRating: '',
       checkinRating: '',
-      valueRating: ''
-    }
+      valueRating: '',
+    };
 
     this.getAccData = this.getAccData.bind(this);
     this.getCommData = this.getCommData.bind(this);
@@ -24,87 +25,81 @@ class CategoryReviews extends React.Component {
   }
 
   getAccData() {
-
-    let data = this.props.data;
+    const { data } = this.props;
     let rating = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       rating += data[i].accuracyRating;
     }
-    let average = rating / data.length;
+    const average = rating / data.length;
 
     this.setState({
-      accuracyRating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+      accuracyRating: Number(`${Math.round(parseFloat(`${average}e${2}`))}e-${2}`).toFixed(2),
+    });
   }
 
   getCommData() {
-
-    let data = this.props.data;
+    const { data } = this.props;
     let rating = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       rating += data[i].commRating;
     }
-    let average = rating / data.length;
+    const average = rating / data.length;
 
     this.setState({
-      commRating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+      commRating: Number(`${Math.round(parseFloat(`${average}e${2}`))}e-${2}`).toFixed(2),
+    });
   }
 
   getCleanData() {
-
-    let data = this.props.data;
+    const { data } = this.props;
     let rating = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       rating += data[i].cleanRating;
     }
-    let average = rating / data.length;
+    const average = rating / data.length;
 
     this.setState({
-      cleanRating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+      cleanRating: Number(`${Math.round(parseFloat(`${average}e${2}`))}e-${2}`).toFixed(2),
+    });
   }
 
   getLocationData() {
-
-    let data = this.props.data;
+    const { data } = this.props;
     let rating = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       rating += data[i].locationRating;
     }
-    let average = rating / data.length;
+    const average = rating / data.length;
 
     this.setState({
-      locationRating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+      locationRating: Number(`${Math.round(parseFloat(`${average}e${2}`))}e-${2}`).toFixed(2),
+    });
   }
 
   getCheckinData() {
-
-    let data = this.props.data;
+    const { data } = this.props;
     let rating = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       rating += data[i].checkinRating;
     }
-    let average = rating / data.length;
+    const average = rating / data.length;
 
     this.setState({
-      checkinRating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+      checkinRating: Number(`${Math.round(parseFloat(`${average}e${2}`))}e-${2}`).toFixed(2),
+    });
   }
 
   getValueData() {
-
-    let data = this.props.data;
+    const { data } = this.props;
     let rating = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       rating += data[i].valueRating;
     }
-    let average = rating / data.length;
+    const average = rating / data.length;
 
     this.setState({
-      valueRating: Number(Math.round(parseFloat(average + 'e' + 2)) + 'e-' + 2).toFixed(2)
-    })
+      valueRating: Number(`${Math.round(parseFloat(`${average}e${2}`))}e-${2}`).toFixed(2),
+    });
   }
 
   componentDidUpdate(props) {
@@ -119,7 +114,7 @@ class CategoryReviews extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         <table className={styles.table}>
           <tbody>
@@ -203,12 +198,10 @@ class CategoryReviews extends React.Component {
             </tr>
           </tbody>
         </table>
-      </div>
-    )
+    </div>
+    );
   }
 }
-
-
 
 
 export default CategoryReviews;
