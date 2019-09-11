@@ -1,4 +1,4 @@
-# Project Name
+# Dragon-Scaling
 
 > Backend for review module in reserving places to stay.
 
@@ -17,11 +17,11 @@
 
 > CRUD
 
-- app.post('/rooms', controller.create)
-- app.get('/rooms', controller.getAll)
-- app.get('/rooms/:id', controller.getOne)
-- app.put('/rooms/:id', controller.update)
-- app.delete('/rooms/:id', controller.remove)
+- app.post('/rooms/:id', controller.create)
+- app.get('/rooms/:id', controller.getAll)
+- app.get('/reviews/:id', controller.getOne)
+- app.put('/reviews/:id', controller.update)
+- app.delete('/reviews/:id', controller.remove)
 
 ## Requirements
 
