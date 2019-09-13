@@ -1,16 +1,19 @@
 const faker = require('faker');
 
-const generateDatas = () => {
+const roomsArr = [];
+const usersArr = [];
+const reviewsArr = [];
+
+const generateReviewDatas = (num) => {
   const years = [2017, 2018, 2019];
   let reviews = {};
 
   const chance = Math.floor(Math.random() * 10);
   if (chance !== 1) {
     reviews = {
-      custName: faker.name.firstName(),
-      custPic: faker.image.avatar(),
-      date: `${faker.date.month()}, ${years[Math.floor(Math.random() * 3)]}`,
+      id: num,
       reviewText: faker.lorem.sentence(),
+      reviewDate: `${faker.date.month()} ${years[Math.floor(Math.random() * 3)]}`,
       accuracy: Math.floor(Math.random() * 5),
       location: Math.floor(Math.random() * 5),
       communication: Math.floor(Math.random() * 5),
@@ -20,14 +23,14 @@ const generateDatas = () => {
       hostName: faker.name.firstName(),
       hostPic: faker.image.avatar(),
       responseText: faker.lorem.sentence(),
-      roomId: Math.floor(Math.random() * 10000000 + 1),
+      roomId: num,
+      userId: num,
     };
   } else {
     reviews = {
-      custName: faker.name.firstName(),
-      custPic: faker.image.avatar(),
-      date: `${faker.date.month()}, ${years[Math.floor(Math.random() * 3)]}`,
+      id: num,
       reviewText: faker.lorem.sentence(),
+      reviewDate: `${faker.date.month()} ${years[Math.floor(Math.random() * 3)]}`,
       accuracy: Math.floor(Math.random() * 5),
       location: Math.floor(Math.random() * 5),
       communication: Math.floor(Math.random() * 5),
@@ -37,14 +40,40 @@ const generateDatas = () => {
       hostName: null,
       hostPic: null,
       responseText: null,
-      roomId: Math.floor(Math.random() * 10000000 + 1),
+      roomId: num,
+      userId: num,
     };
   }
 
   return reviews;
 };
 
-module.exports = generateDatas;
+const generateUserDatas = (id) => {
+  let user = {};
+  user = {
+    id,
+    name: faker.name.firstName(),
+    pic: faker.image.avatar(),
+  };
+
+  return user;
+};
+
+for (let i = 1; i <= 10000000; i += 1) {
+  const room = { id: i };
+  const user = generateUserDatas(i);
+  usersArr.push(user);
+  roomsArr.push(room);
+}
+
+
+for (let j = 1; j <= 10000000; j += 1) {
+  const review = generateReviewDatas(j);
+  reviewsArr.push(review);
+}
+
+
+console.log(reviewsArr);
 /*
   id: {
       type: Sequelize.INTEGER,
