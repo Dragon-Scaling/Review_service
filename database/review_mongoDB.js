@@ -1,5 +1,5 @@
-
-/*
+var reviewSchema = new mongoose.Schema({
+  id: Number,
   custName: String,
   custPic: String,
   date: String,
@@ -10,8 +10,10 @@
   checkIn: Number,
   cleanliness: Number,
   value: Number,
-  host: String,
+  hostName: String,
   hostPic: String,
   responseText: String,
-  reserva_id: Number,
-*/
+  roomId: Number,
+  createdAt: Date.now(),
+  updatedAt: Date.now(),
+});

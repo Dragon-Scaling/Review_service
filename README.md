@@ -17,11 +17,11 @@
 
 > CRUD
 
-- app.post('/rooms/:id', controller.create)
-- app.get('/rooms/:id', controller.getAll)
-- app.get('/reviews/:id', controller.getOne)
-- app.put('/reviews/:id', controller.update)
-- app.delete('/reviews/:id', controller.remove)
+- Create / POST - '/rooms/:id/reviews'
+- Read / GETAll - '/rooms/:id/reviews'
+- Read / GET - '/rooms/:id/reviews/:id'
+- Update / PUT - '/rooms/:id/reviews/:id'
+- Delete / DELETE - '/reviews/:id'
 
 ## Requirements
 
