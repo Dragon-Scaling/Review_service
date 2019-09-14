@@ -1,8 +1,12 @@
-let roomSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+
+const roomSchema = new mongoose.Schema({
   id: Number,
 });
 
-let reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   id: Number,
   date: String,
   reviewText: String,
@@ -22,7 +26,7 @@ let reviewSchema = new mongoose.Schema({
   updatedAt: Date.now(),
 });
 
-let userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   id: Number,
   name: String,
   pic: String,
