@@ -6,7 +6,7 @@ const pool = new Pool({
 });
 
 module.exports = {
-  getAll: (callback) => {
+  getOne: (callback) => {
     pool.query('SELECT * FROM reviews ORDER BY id ASC', (error, datas) => {
       if (error) {
         throw error;
