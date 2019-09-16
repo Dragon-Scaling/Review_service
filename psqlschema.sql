@@ -4,23 +4,23 @@ CREATE TABLE rooms (
 
 CREATE TABLE users(
   id integer PRIMARY KEY,
-  name text,
-  pic text
+  name varchar(50),
+  picture text
 );
 
 CREATE TABLE reviews(
   id integer PRIMARY KEY,
   reviewText text,
-  reviewDate date,
+  reviewDate varchar(50),
   accuracy smallint,
   location smallint,
   communication smallint,
   checkIn smallint,
   cleanliness smallint,
   value smallint,
-  hostName text,
+  hostName varchar(50),
   hostPic text,
-  responseDate date,
+  responseDate varchar(50),
   responseText text,
   roomId integer,
   userId integer,
@@ -29,3 +29,4 @@ CREATE TABLE reviews(
   foreign key (userId)
      REFERENCES users (id)
 );
+

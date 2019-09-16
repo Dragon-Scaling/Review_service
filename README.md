@@ -18,7 +18,7 @@
 > CRUD
 
 - Create / POST - '/rooms/:id/reviews'
-- Read / GETAll - '/rooms/:id/reviews'
+- Read / GET (all reviews) - '/rooms/:id/reviews'
 - Read / GET - '/rooms/:id/reviews/:id'
 - Update / PUT - '/rooms/:id/reviews/:id'
 - Delete / DELETE - '/reviews/:id'
