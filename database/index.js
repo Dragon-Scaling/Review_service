@@ -47,6 +47,18 @@ module.exports = {
     })
   },
 
+  update: (materials, callback) => {
+    //{ roomId: '210329', reviewId: '746820' }
+    //update reviews set accuracy = 1 where id = 39000001;
+    //{ ids: { roomId: '1', reviewId: '1' },material: { text: 'test' } }
+    const key = Object.keys(materials.material);
+    const value = Object.values(materials.material)
+    pool.query(`UPDATE reviews SET ${key[0]} = ${value[0]} WHERE roomId = ${materials.ids.roomId} AND id = ${materials.ids.reviewId}`, (err, result) => {
+      if(err) throw err;
+      callback(null, result);
+    })
+  },
+
   remove: (id, callback) => {
     pool.query(`delete from reviews where id = ${id}`, (err, result)=>{
       if(err) throw err;
@@ -55,22 +67,3 @@ module.exports = {
   }
 };
 
-/*
-  "id": 39000001,
-  "reviewtext": "Unde cum et aut suscipit perspiciatis consequatur dolor fugit eos.",
-  "reviewdate": "2017-08-17T07:00:00.000Z",
-  "accuracy": 3,
-  "location": 4,
-  "communication": 1,
-  "checkin": 2,
-  "cleanliness": 1,
-  "value": 0,
-  "hostname": "Zander",
-  "hostpic": "https://s3.amazonaws.com/uifaces/faces/twitter/helderleal/128.jpg",
-  "responsedate": "2017-08-10T07:00:00.000Z",
-  "responsetext": "Error aut in in culpa.",
-  "roomid": 210329,
-  "userid": 967702
-
-
-*/

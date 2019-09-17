@@ -50,6 +50,21 @@ app.post('/rooms/:id/reviews', (req, res) => {
   })
 })
 
+app.put('/rooms/:roomId/reviews/:reviewId', (req, res) => {
+  let materials = {
+    ids: req.params,
+    material: req.body,
+  };
+
+  db.update(materials, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send('update success!')
+    }
+  })
+})
+
 app.delete('/reviews/:id', (req, res) => {
   let id = req.params.id;
 
