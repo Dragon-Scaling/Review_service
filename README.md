@@ -19,8 +19,8 @@
 
 - Create / POST - '/rooms/:id/reviews'
 - Read / GET (all reviews) - '/rooms/:id/reviews'
-- Read / GET - '/rooms/:id/reviews/:id'
-- Update / PUT - '/rooms/:id/reviews/:id'
+- Read / GET - '/rooms/:roomId/reviews/:reviewId'
+- Update / PUT - '/rooms/:roomId/reviews/:reviewId'
 - Delete / DELETE - '/reviews/:id'
 
 ## Requirements
