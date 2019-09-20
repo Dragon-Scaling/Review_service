@@ -36,4 +36,4 @@ const reviewSchema = mongoose.Schema({
 module.exports = mongoose.model('Review', reviewSchema);
 module.exports = mongoose.model('User', userSchema);
 
-// mongoimport -d reviews -c reviews --type csv --file reviews_9.csv --headerline
+// mongoimport -d reviews -c reviews --type csv --file reviews.csv --headerline

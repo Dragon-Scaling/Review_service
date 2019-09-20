@@ -7,31 +7,23 @@ const pool = new Pool({
 
 module.exports = {
   getAll: (id, callback) => {
-    pool.query(`SELECT * FROM reviews WHERE roomId = ${id} ORDER BY id ASC`, (error, datas) => {
+    pool.query(`SELECT * FROM users INNER JOIN reviews ON reviews.userid = users.id WHERE reviews.roomId = ${id}`, (error, datas) => {
       if (error) {
         throw error;
       }
+      // console.log(datas.rows);
       callback(null, datas.rows);
     });
   },
 
   getOne: (ids, callback) => {
     // console.log(ids);
-    //{ roomId: '210329', reviewId: '746820' }
-    pool.query(`SELECT * FROM reviews WHERE roomId = ${ids.roomId} AND id = ${ids.reviewId} ORDER BY id ASC`, (error, datas) => {
+    //{ roomId: '210329', reviewId: '19297081' }
+    pool.query(`SELECT * FROM users INNER JOIN reviews ON reviews.userid = users.id WHERE reviews.roomId = ${ids.roomId} AND reviews.id = ${ids.reviewId}`, (error, datas) => {
       if (error) {
         throw error;
       }
-      // console.log(datas.rows);
-      let findUser = datas.rows[0];
-      // console.log(findUser.userid);
-      pool.query(`SELECT * FROM users INNER JOIN reviews ON reviews.userid = users.id WHERE users.id = ${findUser.userid} AND reviews.id = ${ids.reviewId}`, (err, data) => {
-        if (error) {
-          throw error;
-        }
-        // console.log(data);
-        callback(null, data.rows);
-      })
+      callback(null, datas.rows);
     });
   },
 

@@ -18,7 +18,7 @@ class OverallReview extends React.Component {
     let data = this.props.data;
     let rating = 0;
     for (let i = 0; i < data.length; i++) {
-      rating += data[i].overallRating;
+      rating += data[i].value;
     }
     let average = rating / data.length;
 

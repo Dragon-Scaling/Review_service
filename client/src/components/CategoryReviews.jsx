@@ -28,7 +28,7 @@ class CategoryReviews extends React.Component {
     const { data } = this.props;
     let rating = 0;
     for (let i = 0; i < data.length; i += 1) {
-      rating += data[i].accuracyRating;
+      rating += data[i].accuracy;
     }
     const average = rating / data.length;
 
@@ -41,7 +41,7 @@ class CategoryReviews extends React.Component {
     const { data } = this.props;
     let rating = 0;
     for (let i = 0; i < data.length; i += 1) {
-      rating += data[i].commRating;
+      rating += data[i].communication;
     }
     const average = rating / data.length;
 
@@ -54,7 +54,7 @@ class CategoryReviews extends React.Component {
     const { data } = this.props;
     let rating = 0;
     for (let i = 0; i < data.length; i += 1) {
-      rating += data[i].cleanRating;
+      rating += data[i].cleanliness;
     }
     const average = rating / data.length;
 
@@ -67,7 +67,7 @@ class CategoryReviews extends React.Component {
     const { data } = this.props;
     let rating = 0;
     for (let i = 0; i < data.length; i += 1) {
-      rating += data[i].locationRating;
+      rating += data[i].location;
     }
     const average = rating / data.length;
 
@@ -80,7 +80,7 @@ class CategoryReviews extends React.Component {
     const { data } = this.props;
     let rating = 0;
     for (let i = 0; i < data.length; i += 1) {
-      rating += data[i].checkinRating;
+      rating += data[i].checkin;
     }
     const average = rating / data.length;
 
@@ -93,7 +93,7 @@ class CategoryReviews extends React.Component {
     const { data } = this.props;
     let rating = 0;
     for (let i = 0; i < data.length; i += 1) {
-      rating += data[i].valueRating;
+      rating += data[i].value;
     }
     const average = rating / data.length;
 

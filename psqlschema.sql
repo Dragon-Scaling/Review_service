@@ -1,15 +1,15 @@
 CREATE TABLE rooms (
-  id integer PRIMARY KEY
+  id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE users(
-  id integer PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name varchar(50),
   picture text
 );
 
 CREATE TABLE reviews(
-  id integer PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   reviewText text,
   reviewDate varchar(50),
   accuracy smallint,

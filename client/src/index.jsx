@@ -26,9 +26,11 @@ class App extends React.Component {
 
   componentDidMount() {
     // GET request to retrieve reviews data
+    var id = parseInt(document.URL.split("/")[4])
+
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:3000/rooms',
+      url: `http://localhost:3003/rooms/${id}/reviews`,
       dataType: 'json',
       success: (data) => {
         this.setState({
@@ -123,4 +125,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('Reviews'));

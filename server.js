@@ -1,15 +1,22 @@
 /* eslint-disable no-unused-vars */
+const nr = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./database/index.js');
+const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3003;
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(`${__dirname}/../client/dist`));
+app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('/rooms/:id/reviews', (req, res) => {
   // console.log(req.params.id);
@@ -80,7 +87,3 @@ app.delete('/reviews/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
-
-/*
-- Update / PUT - '/rooms/:id/reviews/:id'
-*/
