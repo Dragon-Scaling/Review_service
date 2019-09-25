@@ -28,6 +28,10 @@ class App extends React.Component {
     // GET request to retrieve reviews data
     var id = parseInt(document.URL.split("/")[4])
 
+    if(!id) {
+      id = 1;
+    }
+
     $.ajax({
       type: 'GET',
       url: `http://localhost:3003/rooms/${id}/reviews`,

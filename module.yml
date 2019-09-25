@@ -9,5 +9,5 @@ config:
 scenarios:
   - flow:
       - get:
-          url: "/rooms/210329/reviews"
+          url: "/rooms/{{$randomNumber(0, 10000000)}}/reviews"
 
