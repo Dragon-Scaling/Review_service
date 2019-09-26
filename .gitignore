@@ -27,3 +27,16 @@ client/dist/main.js
 # Files
 newrelic.js
 
+database/reviews1.csv
+database/reviews10.csv
+database/reviews2.csv
+database/reviews3.csv
+database/reviews4.csv
+database/reviews5.csv
+database/reviews6.csv
+database/reviews7.csv
+database/reviews8.csv
+database/reviews9.csv
+database/rooms.csv
+database/users.csv
+

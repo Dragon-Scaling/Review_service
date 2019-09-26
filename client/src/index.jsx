@@ -34,7 +34,7 @@ class App extends React.Component {
 
     $.ajax({
       type: 'GET',
-      url: `http://localhost:3003/rooms/${id}/reviews`,
+      url: `/api/rooms/${id}/reviews`,
       dataType: 'json',
       success: (data) => {
         this.setState({
@@ -129,4 +129,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('Reviews'));
+export default App
+
+//ReactDOM.render(<App />, document.getElementById('Reviews'));
