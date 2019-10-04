@@ -3,29 +3,48 @@ const nr = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./database/index.js');
-const path = require('path');
 const cors = require('cors');
+const redis = require('redis');
 
 const app = express();
 const PORT = 3003;
 
+const clientRedis = redis.createClient(6379);
+
+clientRedis.on('error', (err) => {
+  console.log("Error " + err)
+});
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('client/dist'))
-app.use(`/listing/:id`,express.static('client/dist'))
+app.use(`/listing/:id`, express.static('client/dist'))
 
 
 app.get('/api/rooms/:id/reviews', (req, res) => {
   // console.log(req.params.id);
   let id = req.params.id;
-  db.getAll(id, (err, results) => {
-    if (err) {
-      console.log(err);
+  const reviewRedisKey = `${id}`;
+
+  clientRedis.get(reviewRedisKey, (err, reviews) => {
+
+    if (reviews) {
+      console.log('redis', JSON.parse(reviews));
+      res.send(JSON.parse(reviews))
+
     } else {
-      res.send(results);
+
+      db.getAll(id, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('origin', results);
+          clientRedis.setex(reviewRedisKey, 3600, JSON.stringify(results))
+          res.send(results);
+        }
+      });
     }
   });
 });

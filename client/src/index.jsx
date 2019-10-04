@@ -37,6 +37,7 @@ class App extends React.Component {
       url: `/api/rooms/${id}/reviews`,
       dataType: 'json',
       success: (data) => {
+        console.log(data);
         this.setState({
           entry: data,
           filtered: data,
